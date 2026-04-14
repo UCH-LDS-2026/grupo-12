@@ -12,6 +12,9 @@ Backlog Inicial: Gestionado a través de GitHub Issues (8 historias de usuario c
 Wireframe: Prototipo conceptual de la interfaz.
 
 Integrantes del Grupo 12:
+
 Josué Ferreyra Tica
+
 Matías Porcari
+
 Santiago Vicente
