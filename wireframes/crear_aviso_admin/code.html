@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Crear Aviso - Admin Panel</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error": "#ba1a1a",
+                        "tertiary-container": "#747575",
+                        "on-tertiary-fixed-variant": "#e3e2e2",
+                        "outline": "#777777",
+                        "on-background": "#1a1c1c",
+                        "on-error": "#ffffff",
+                        "surface-bright": "#f9f9f9",
+                        "surface-container-high": "#e8e8e8",
+                        "tertiary": "#3a3c3c",
+                        "on-primary-fixed-variant": "#e2e2e2",
+                        "primary-fixed-dim": "#474747",
+                        "on-secondary-container": "#1b1c1c",
+                        "surface-container-low": "#f3f3f3",
+                        "primary-fixed": "#5e5e5e",
+                        "secondary-fixed-dim": "#acabab",
+                        "surface-container-highest": "#e2e2e2",
+                        "surface-variant": "#e2e2e2",
+                        "on-tertiary-fixed": "#ffffff",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "on-primary-fixed": "#ffffff",
+                        "on-surface-variant": "#474747",
+                        "surface-container": "#eeeeee",
+                        "on-primary-container": "#ffffff",
+                        "primary-container": "#3b3b3b",
+                        "secondary-container": "#d5d4d4",
+                        "outline-variant": "#c6c6c6",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#464747",
+                        "inverse-primary": "#c6c6c6",
+                        "error-container": "#ffdad6",
+                        "on-primary": "#e2e2e2",
+                        "on-tertiary-container": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary": "#e3e2e2",
+                        "on-error-container": "#410002",
+                        "background": "#f9f9f9",
+                        "surface-tint": "#5e5e5e",
+                        "secondary": "#5e5e5e",
+                        "primary": "#000000",
+                        "inverse-on-surface": "#f1f1f1",
+                        "surface": "#f9f9f9",
+                        "surface-dim": "#dadada",
+                        "inverse-surface": "#2f3131",
+                        "tertiary-fixed": "#5d5e5f",
+                        "secondary-fixed": "#c7c6c6",
+                        "on-surface": "#1a1c1c",
+                        "on-secondary-fixed-variant": "#3b3b3c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-slate-50 dark:bg-zinc-950">
+<div class="flex items-center justify-between px-4 h-16 w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-4">
+<button class="transition-colors duration-200 active:opacity-70 hover:bg-zinc-200 dark:hover:bg-zinc-800 p-2 rounded-lg">
+<span class="material-symbols-outlined text-black dark:text-white">arrow_back</span>
+</button>
+<h1 class="text-black dark:text-white font-['Inter'] font-bold tracking-tight text-xl">Crear Aviso</h1>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-zinc-400">admin_panel_settings</span>
+<span class="font-label text-[10px] uppercase tracking-widest font-medium text-zinc-500">Admin</span>
+</div>
+</div>
+<div class="bg-slate-200/50 dark:bg-zinc-800/50 h-[1px] w-full"></div>
+</header>
+<main class="pt-24 px-4 max-w-3xl mx-auto space-y-12">
+<!-- Header Section -->
+<section class="space-y-2">
+<span class="font-label text-sm uppercase tracking-[0.2em] text-outline font-semibold">Gestión de Comunicaciones</span>
+<h2 class="text-display-lg text-5xl font-extrabold tracking-tighter text-primary">Crear Nuevo Aviso</h2>
+<p class="text-on-surface-variant font-body leading-relaxed max-w-xl">
+                Redacta y categoriza los anuncios para la comunidad. Los avisos marcados como urgentes notificarán inmediatamente.
+            </p>
+</section>
+<!-- Form Canvas -->
+<div class="bg-surface-container-lowest p-8 space-y-10 rounded-xl">
+<!-- Input: Titulo -->
+<div class="space-y-3 group">
+<label class="block font-label text-[11px] uppercase tracking-widest font-bold text-outline group-focus-within:text-primary transition-colors" for="titulo">
+                    Título del aviso
+                </label>
+<input class="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:ring-0 focus:border-primary py-4 text-xl font-medium transition-all placeholder:text-surface-container-highest" id="titulo" placeholder="Ej: Mantenimiento de Ascensores" type="text"/>
+</div>
+<!-- Input: Categoria -->
+<div class="space-y-4">
+<label class="block font-label text-[11px] uppercase tracking-widest font-bold text-outline">
+                    Categoría del mensaje
+                </label>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+<button class="flex items-center justify-center gap-3 p-4 bg-surface-container-low border-2 border-transparent hover:border-outline-variant transition-all text-sm font-bold">
+<span class="material-symbols-outlined text-error" style="font-variation-settings: 'FILL' 1;">error</span>
+                        Urgente
+                    </button>
+<button class="flex items-center justify-center gap-3 p-4 bg-primary text-on-primary border-2 border-primary transition-all text-sm font-bold">
+<span class="material-symbols-outlined">build</span>
+                        Mantenimiento
+                    </button>
+<button class="flex items-center justify-center gap-3 p-4 bg-surface-container-low border-2 border-transparent hover:border-outline-variant transition-all text-sm font-bold">
+<span class="material-symbols-outlined">event</span>
+                        Evento
+                    </button>
+</div>
+</div>
+<!-- Input: Contenido -->
+<div class="space-y-3 group">
+<label class="block font-label text-[11px] uppercase tracking-widest font-bold text-outline group-focus-within:text-primary transition-colors" for="contenido">
+                    Contenido del aviso
+                </label>
+<textarea class="w-full bg-surface-container-low border-0 border-b-2 border-outline-variant focus:ring-0 focus:border-primary p-6 text-body-md leading-relaxed transition-all resize-none" id="contenido" placeholder="Describe los detalles del aviso aquí..." rows="8"></textarea>
+</div>
+<!-- Media Preview Placeholder -->
+<div class="space-y-3">
+<label class="block font-label text-[11px] uppercase tracking-widest font-bold text-outline">
+                    Adjuntar Imagen (Opcional)
+                </label>
+<div class="h-48 w-full bg-surface-variant flex items-center justify-center relative overflow-hidden group cursor-pointer border-2 border-dashed border-outline-variant hover:border-primary transition-colors">
+<div class="flex flex-col items-center gap-2 z-10 text-outline group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-4xl">add_a_photo</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Subir archivo</span>
+</div>
+<!-- Cross hatch decorative pattern -->
+<div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: linear-gradient(45deg, #777 25%, transparent 25%), linear-gradient(-45deg, #777 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #777 75%), linear-gradient(-45deg, transparent 75%, #777 75%); background-size: 20px 20px;"></div>
+</div>
+</div>
+<!-- Footer Action -->
+<div class="pt-6">
+<button class="w-full bg-primary text-on-primary py-5 px-8 flex items-center justify-center gap-4 hover:bg-primary-container transition-all active:scale-[0.98]">
+<span class="font-headline font-bold text-lg uppercase tracking-widest">Publicar Aviso</span>
+<span class="material-symbols-outlined">send</span>
+</button>
+<p class="mt-4 text-center text-[10px] text-outline font-medium uppercase tracking-[0.1em]">
+                    Este aviso será visible para todos los usuarios registrados
+                </p>
+</div>
+</div>
+<!-- Secondary Meta/Context -->
+<div class="bg-surface-dim p-6 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-outline rounded-full"></div>
+<div>
+<p class="text-[11px] font-bold uppercase tracking-tight text-on-background">Admin Principal</p>
+<p class="text-[10px] text-on-surface-variant">Última actividad: hace 5 min</p>
+</div>
+</div>
+<div class="flex gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">save</span>
+</button>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 bg-white/70 dark:bg-zinc-900/70 backdrop-blur-xl border-t border-zinc-100 dark:border-zinc-800 shadow-[0_-4px_20px_rgba(0,0,0,0.03)] md:hidden">
+<div class="flex justify-around items-center h-16 pb-safe w-full">
+<a class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 hover:text-black dark:hover:text-white scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-widest font-medium">Inicio</span>
+</a>
+<a class="flex flex-col items-center justify-center text-black dark:text-white font-bold scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">campaign</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-widest font-medium">Avisos</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 hover:text-black dark:hover:text-white scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-widest font-medium">Usuarios</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 hover:text-black dark:hover:text-white scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-widest font-medium">Perfil</span>
+</a>
+</div>
+</nav>
+</body></html>

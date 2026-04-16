@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Reservas - Barrio Privado</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#ffffff",
+                        "primary-container": "#3b3b3b",
+                        "error-container": "#ffdad6",
+                        "surface-bright": "#f9f9f9",
+                        "secondary-fixed": "#c7c6c6",
+                        "on-background": "#1a1c1c",
+                        "on-error-container": "#410002",
+                        "inverse-primary": "#c6c6c6",
+                        "on-tertiary-container": "#ffffff",
+                        "on-secondary-fixed-variant": "#3b3b3c",
+                        "surface-container-low": "#f3f3f3",
+                        "primary-fixed-dim": "#474747",
+                        "on-secondary-container": "#1b1c1c",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "outline-variant": "#c6c6c6",
+                        "outline": "#777777",
+                        "on-primary-container": "#ffffff",
+                        "primary": "#000000",
+                        "on-tertiary-fixed": "#ffffff",
+                        "tertiary-fixed": "#5d5e5f",
+                        "secondary": "#5e5e5e",
+                        "background": "#f9f9f9",
+                        "surface-variant": "#e2e2e2",
+                        "on-surface-variant": "#474747",
+                        "on-primary": "#e2e2e2",
+                        "secondary-container": "#d5d4d4",
+                        "primary-fixed": "#5e5e5e",
+                        "tertiary": "#3a3c3c",
+                        "on-primary-fixed": "#ffffff",
+                        "inverse-on-surface": "#f1f1f1",
+                        "surface-tint": "#5e5e5e",
+                        "on-surface": "#1a1c1c",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#747575",
+                        "surface-container-high": "#e8e8e8",
+                        "surface-dim": "#dadada",
+                        "surface": "#f9f9f9",
+                        "on-primary-fixed-variant": "#e2e2e2",
+                        "on-tertiary": "#e3e2e2",
+                        "tertiary-fixed-dim": "#464747",
+                        "surface-container": "#eeeeee",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-tertiary-fixed-variant": "#e3e2e2",
+                        "on-error": "#ffffff",
+                        "secondary-fixed-dim": "#acabab",
+                        "inverse-surface": "#2f3131",
+                        "error": "#ba1a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="flex items-center w-full px-4 h-16 bg-white dark:bg-zinc-950 docked full-width top-0 sticky z-40 transition-colors duration-200">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-zinc-900 dark:text-zinc-50 cursor-pointer p-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-full transition-colors duration-200">arrow_back</span>
+<h1 class="font-sans tracking-tight font-bold text-xl text-zinc-900 dark:text-zinc-50">Reservas</h1>
+</div>
+</header>
+<main class="max-w-md mx-auto px-6 py-8">
+<!-- Hero Section & CTA -->
+<section class="mb-12">
+<div class="flex flex-col gap-2 mb-8">
+<span class="font-sans text-[11px] font-medium tracking-wide uppercase text-secondary">Gestión de Espacios</span>
+<h2 class="text-display-lg font-headline font-black tracking-tight text-primary leading-tight">Nueva Reserva</h2>
+</div>
+<!-- Button Highlight -->
+<button class="group w-full flex items-center justify-between bg-primary text-on-primary p-5 rounded-lg transition-all duration-200 active:scale-[0.98]">
+<div class="flex items-center gap-4">
+<div class="bg-primary-container p-2 rounded-md">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">add</span>
+</div>
+<span class="text-lg font-bold tracking-tight">Agendar nuevo recurso</span>
+</div>
+<span class="material-symbols-outlined opacity-50 group-hover:translate-x-1 transition-transform">chevron_right</span>
+</button>
+</section>
+<!-- List Section -->
+<section>
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-headline-lg font-bold tracking-tight text-on-surface">Mis Reservas</h3>
+<span class="text-label-sm font-medium text-outline">Total: 3</span>
+</div>
+<div class="space-y-6">
+<!-- Reservation Item 1: Confirmada -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border-l-4 border-primary transition-colors">
+<div class="flex justify-between items-start mb-4">
+<div class="flex flex-col gap-1">
+<span class="text-label-sm uppercase tracking-widest text-secondary font-bold">Sábado 26 de Octubre</span>
+<h4 class="text-xl font-black tracking-tight text-primary">Quincho A</h4>
+</div>
+<span class="px-3 py-1 bg-surface-container-highest text-primary text-[10px] font-black uppercase tracking-tighter rounded-full">Confirmada</span>
+</div>
+<div class="flex items-center gap-6 mt-4 pt-4 border-t border-surface-container-low">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-outline">schedule</span>
+<span class="text-body-md font-medium text-on-surface-variant">19:00 - 23:30 hs</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-outline">group</span>
+<span class="text-body-md font-medium text-on-surface-variant">25 pers.</span>
+</div>
+</div>
+</div>
+<!-- Reservation Item 2: Pendiente -->
+<div class="bg-surface-container-low p-6 rounded-xl border-l-4 border-outline transition-colors">
+<div class="flex justify-between items-start mb-4">
+<div class="flex flex-col gap-1">
+<span class="text-label-sm uppercase tracking-widest text-secondary font-bold">Domingo 27 de Octubre</span>
+<h4 class="text-xl font-black tracking-tight text-primary">Cancha de Tenis 1</h4>
+</div>
+<span class="px-3 py-1 bg-surface-container-highest text-secondary text-[10px] font-black uppercase tracking-tighter rounded-full">Pendiente</span>
+</div>
+<div class="flex items-center gap-6 mt-4 pt-4 border-t border-surface-container-highest">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-outline">schedule</span>
+<span class="text-body-md font-medium text-on-surface-variant">10:00 - 11:30 hs</span>
+</div>
+</div>
+</div>
+<!-- Reservation Item 3: Finalizada -->
+<div class="bg-surface p-6 rounded-xl opacity-60">
+<div class="flex justify-between items-start mb-4">
+<div class="flex flex-col gap-1">
+<span class="text-label-sm uppercase tracking-widest text-secondary font-bold">Lunes 21 de Octubre</span>
+<h4 class="text-xl font-black tracking-tight text-primary">Parrilla 4</h4>
+</div>
+<span class="px-3 py-1 bg-surface-container-low text-outline text-[10px] font-black uppercase tracking-tighter rounded-full">Finalizada</span>
+</div>
+<div class="flex items-center gap-6 mt-4 pt-4 border-t border-surface-container-low">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-outline">schedule</span>
+<span class="text-body-md font-medium text-on-surface-variant">20:00 - 23:00 hs</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Decorative Spacer for architectural rhythm -->
+<div class="h-24"></div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 py-3 pb-safe bg-white/70 dark:bg-zinc-950/70 backdrop-blur-xl z-50 border-t border-zinc-200 dark:border-zinc-800">
+<!-- Inicio -->
+<a class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-600 scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined mb-1">home</span>
+<span class="font-sans text-[11px] font-medium tracking-wide uppercase">Inicio</span>
+</a>
+<!-- Visitas -->
+<a class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-600 scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined mb-1">group</span>
+<span class="font-sans text-[11px] font-medium tracking-wide uppercase">Visitas</span>
+</a>
+<!-- Reservas (Active) -->
+<a class="flex flex-col items-center justify-center text-zinc-900 dark:text-zinc-50 font-bold scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">event_available</span>
+<span class="font-sans text-[11px] font-medium tracking-wide uppercase">Reservas</span>
+</a>
+<!-- Perfil -->
+<a class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-600 scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined mb-1">person</span>
+<span class="font-sans text-[11px] font-medium tracking-wide uppercase">Perfil</span>
+</a>
+</nav>
+</body></html>

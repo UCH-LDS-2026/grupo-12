@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Reportar Alerta</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-container": "#ffffff",
+                    "on-surface-variant": "#474747",
+                    "on-background": "#1a1c1c",
+                    "primary-container": "#3b3b3b",
+                    "on-error": "#ffffff",
+                    "primary-fixed-dim": "#474747",
+                    "inverse-surface": "#2f3131",
+                    "surface-container": "#eeeeee",
+                    "outline": "#777777",
+                    "on-tertiary-fixed": "#ffffff",
+                    "tertiary-fixed-dim": "#464747",
+                    "outline-variant": "#c6c6c6",
+                    "secondary-fixed-dim": "#acabab",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary": "#e3e2e2",
+                    "on-surface": "#1a1c1c",
+                    "tertiary": "#3a3c3c",
+                    "surface": "#f9f9f9",
+                    "on-primary-fixed-variant": "#e2e2e2",
+                    "on-error-container": "#410002",
+                    "on-secondary-fixed": "#1b1c1c",
+                    "error": "#ba1a1a",
+                    "background": "#f9f9f9",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary": "#5e5e5e",
+                    "inverse-primary": "#c6c6c6",
+                    "on-primary-fixed": "#ffffff",
+                    "on-primary": "#e2e2e2",
+                    "error-container": "#ffdad6",
+                    "inverse-on-surface": "#f1f1f1",
+                    "surface-variant": "#e2e2e2",
+                    "surface-dim": "#dadada",
+                    "on-tertiary-fixed-variant": "#e3e2e2",
+                    "secondary-container": "#d5d4d4",
+                    "tertiary-container": "#747575",
+                    "surface-container-low": "#f3f3f3",
+                    "surface-bright": "#f9f9f9",
+                    "on-secondary-fixed-variant": "#3b3b3c",
+                    "on-secondary-container": "#1b1c1c",
+                    "on-primary-container": "#ffffff",
+                    "secondary-fixed": "#c7c6c6",
+                    "surface-container-high": "#e8e8e8",
+                    "surface-tint": "#5e5e5e",
+                    "tertiary-fixed": "#5d5e5f",
+                    "primary-fixed": "#5e5e5e",
+                    "surface-container-highest": "#e2e2e2",
+                    "primary": "#000000"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9f9;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-surface antialiased">
+<!-- TopAppBar -->
+<header class="bg-neutral-50 dark:bg-neutral-900 fixed top-0 w-full z-50">
+<div class="flex items-center h-16 px-4 w-full">
+<button class="transition-all duration-200 active:scale-95 p-2 mr-2">
+<span class="material-symbols-outlined text-black dark:text-white" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-['Inter'] headline-lg font-bold tracking-tight text-black dark:text-white text-lg">Reportar Alerta</h1>
+</div>
+</header>
+<!-- Content Canvas -->
+<main class="pt-20 pb-28 px-6 max-w-md mx-auto">
+<div class="space-y-10">
+<!-- Hero Header Segment -->
+<section class="space-y-2">
+<span class="font-['Inter'] label-sm uppercase tracking-widest text-on-surface-variant">Emergencia</span>
+<h2 class="font-['Inter'] text-4xl font-black tracking-tighter leading-none text-primary">¿Qué está sucediendo?</h2>
+<p class="text-on-surface-variant body-md max-w-[80%]">Selecciona el tipo de incidente para priorizar la respuesta adecuada.</p>
+</section>
+<!-- Type Selection: Asymmetric Bento Grid -->
+<section class="grid grid-cols-2 gap-3">
+<button class="col-span-1 bg-surface-container-lowest border border-outline-variant/15 p-5 rounded-xl transition-all active:scale-95 text-left group">
+<span class="material-symbols-outlined text-3xl mb-4 block group-hover:scale-110 transition-transform" data-icon="security">security</span>
+<span class="font-bold block text-sm">Seguridad</span>
+</button>
+<button class="col-span-1 bg-surface-container-lowest border border-outline-variant/15 p-5 rounded-xl transition-all active:scale-95 text-left group">
+<span class="material-symbols-outlined text-3xl mb-4 block group-hover:scale-110 transition-transform" data-icon="medical_services">medical_services</span>
+<span class="font-bold block text-sm">Salud</span>
+</button>
+<button class="col-span-2 bg-surface-container-lowest border border-outline-variant/15 p-5 rounded-xl transition-all active:scale-95 flex items-center justify-between group">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-3xl" data-icon="construction">construction</span>
+<span class="font-bold text-sm">Infraestructura</span>
+</div>
+<span class="material-symbols-outlined opacity-30" data-icon="chevron_right">chevron_right</span>
+</button>
+<button class="col-span-2 bg-surface-container-lowest border border-outline-variant/15 p-5 rounded-xl transition-all active:scale-95 flex items-center justify-between group">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-3xl" data-icon="local_fire_department">local_fire_department</span>
+<span class="font-bold text-sm">Incendio</span>
+</div>
+<span class="material-symbols-outlined opacity-30" data-icon="chevron_right">chevron_right</span>
+</button>
+</section>
+<!-- Description Field -->
+<section class="space-y-4">
+<div class="flex items-baseline justify-between">
+<label class="font-['Inter'] label-sm uppercase tracking-widest text-on-surface-variant">Descripción de la alerta</label>
+<span class="text-[10px] text-outline">0/500</span>
+</div>
+<div class="relative group">
+<textarea class="w-full bg-surface-container-low border-b-2 border-outline focus:border-primary outline-none py-4 px-1 transition-all resize-none font-body text-md placeholder:text-outline-variant" placeholder="Describe brevemente lo ocurrido..." rows="6"></textarea>
+</div>
+</section>
+<!-- Attachment Placeholder (Visual Depth) -->
+<section class="h-32 rounded-xl bg-surface-variant flex flex-col items-center justify-center border-2 border-dashed border-outline-variant/30 space-y-2 group cursor-pointer active:scale-[0.98] transition-transform">
+<span class="material-symbols-outlined text-secondary" data-icon="add_a_photo">add_a_photo</span>
+<span class="label-sm text-secondary uppercase font-bold tracking-tighter">Adjuntar evidencia</span>
+</section>
+<!-- Main Action -->
+<section class="pt-6">
+<button class="w-full bg-primary text-on-primary py-5 rounded-xl font-bold text-lg transition-transform active:scale-95 shadow-[0_10px_30px_rgba(0,0,0,0.1)] flex items-center justify-center gap-3">
+<span>Enviar Reporte</span>
+<span class="material-symbols-outlined text-xl" data-icon="send">send</span>
+</button>
+<p class="text-center text-[10px] text-on-surface-variant mt-6 uppercase tracking-widest opacity-60">Tu ubicación será compartida automáticamente</p>
+</section>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full flex justify-around items-center px-4 py-3 pb-safe bg-white/70 dark:bg-black/70 backdrop-blur-xl border-t border-neutral-200 dark:border-neutral-800 shadow-[0_-4px_20px_rgba(0,0,0,0.05)] z-50 rounded-t-lg">
+<a class="flex flex-col items-center justify-center text-neutral-500 dark:text-neutral-400 p-2 transition-transform active:scale-90 hover:text-black dark:hover:text-white" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-['Inter'] label-sm uppercase tracking-widest mt-1">Inicio</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-black dark:bg-white text-white dark:text-black rounded-xl px-4 py-1.5 transition-transform active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="notification_important">notification_important</span>
+<span class="font-['Inter'] label-sm uppercase tracking-widest mt-1">Alertas</span>
+</a>
+<a class="flex flex-col items-center justify-center text-neutral-500 dark:text-neutral-400 p-2 transition-transform active:scale-90 hover:text-black dark:hover:text-white" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-['Inter'] label-sm uppercase tracking-widest mt-1">Visitas</span>
+</a>
+<a class="flex flex-col items-center justify-center text-neutral-500 dark:text-neutral-400 p-2 transition-transform active:scale-90 hover:text-black dark:hover:text-white" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-['Inter'] label-sm uppercase tracking-widest mt-1">Perfil</span>
+</a>
+</nav>
+</body></html>

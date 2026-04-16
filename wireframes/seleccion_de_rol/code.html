@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface": "#f9f9f9",
+                    "primary-container": "#3b3b3b",
+                    "outline-variant": "#c6c6c6",
+                    "on-tertiary-fixed": "#ffffff",
+                    "on-tertiary-container": "#ffffff",
+                    "on-secondary-container": "#1b1c1c",
+                    "on-error-container": "#410002",
+                    "on-secondary-fixed-variant": "#3b3b3c",
+                    "on-primary": "#e2e2e2",
+                    "tertiary-fixed-dim": "#464747",
+                    "secondary-fixed": "#c7c6c6",
+                    "secondary-container": "#d5d4d4",
+                    "on-error": "#ffffff",
+                    "inverse-primary": "#c6c6c6",
+                    "error-container": "#ffdad6",
+                    "primary-fixed": "#5e5e5e",
+                    "on-primary-container": "#ffffff",
+                    "surface-tint": "#5e5e5e",
+                    "on-tertiary-fixed-variant": "#e3e2e2",
+                    "on-background": "#1a1c1c",
+                    "surface-variant": "#e2e2e2",
+                    "background": "#f9f9f9",
+                    "error": "#ba1a1a",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary": "#5e5e5e",
+                    "primary": "#000000",
+                    "surface-container-low": "#f3f3f3",
+                    "tertiary-container": "#747575",
+                    "on-secondary": "#ffffff",
+                    "inverse-on-surface": "#f1f1f1",
+                    "tertiary": "#3a3c3c",
+                    "outline": "#777777",
+                    "on-primary-fixed": "#ffffff",
+                    "surface-container-high": "#e8e8e8",
+                    "on-primary-fixed-variant": "#e2e2e2",
+                    "secondary-fixed-dim": "#acabab",
+                    "surface-container-highest": "#e2e2e2",
+                    "on-surface": "#1a1c1c",
+                    "on-tertiary": "#e3e2e2",
+                    "surface-bright": "#f9f9f9",
+                    "inverse-surface": "#2f3131",
+                    "surface-container": "#eeeeee",
+                    "on-surface-variant": "#474747",
+                    "surface-dim": "#dadada",
+                    "primary-fixed-dim": "#474747",
+                    "tertiary-fixed": "#5d5e5f",
+                    "on-secondary-fixed": "#1b1c1c"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-50 bg-stone-50 dark:bg-stone-950">
+<div class="flex items-center justify-between px-6 py-4 w-full">
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-stone-200 dark:hover:bg-stone-800 transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined text-black dark:text-white" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-['Inter'] font-bold tracking-tight text-xl text-black dark:text-white">Selección de Rol</h1>
+<div class="w-10"></div> <!-- Spacer for centering -->
+</div>
+<div class="bg-stone-200/50 dark:bg-stone-800/50 h-px"></div>
+</header>
+<main class="max-w-md mx-auto px-6 pt-12 pb-24">
+<!-- Editorial Header -->
+<header class="mb-16">
+<p class="text-[0.6875rem] font-bold uppercase tracking-[0.05em] text-secondary mb-2">IDENTIFICAR</p>
+<h2 class="text-4xl font-black tracking-tighter leading-none mb-4 text-primary">SELECCIONA TU PERFIL</h2>
+<p class="text-on-surface-variant text-sm max-w-[280px]">Elige el rol que coincida con tu nivel de acceso profesional dentro del ecosistema del barrio.</p>
+</header>
+<!-- Role Selection Canvas -->
+<div class="space-y-6">
+<!-- Residente Role Card -->
+<div class="group relative bg-surface-container-lowest overflow-hidden rounded-lg transition-all duration-300 active:scale-[0.98]">
+<div class="flex items-center p-8 gap-6 border border-outline-variant/15">
+<div class="flex-shrink-0 w-16 h-16 bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl text-primary" data-icon="home">home</span>
+</div>
+<div class="flex-grow">
+<h3 class="text-xl font-bold tracking-tight text-primary">Residente</h3>
+<p class="text-xs text-on-surface-variant mt-1">Gestiona tu unidad, visitas y reservas de áreas comunes.</p>
+</div>
+<div class="opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-primary" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Guardia Role Card -->
+<div class="group relative bg-surface-container-lowest overflow-hidden rounded-lg transition-all duration-300 active:scale-[0.98]">
+<div class="flex items-center p-8 gap-6 border border-outline-variant/15">
+<div class="flex-shrink-0 w-16 h-16 bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl text-primary" data-icon="security">security</span>
+</div>
+<div class="flex-grow">
+<h3 class="text-xl font-bold tracking-tight text-primary">Guardia</h3>
+<p class="text-xs text-on-surface-variant mt-1">Monitorea puntos de acceso, verifica IDs y registra llegadas.</p>
+</div>
+<div class="opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-primary" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Administrador Role Card -->
+<div class="group relative bg-surface-container-lowest overflow-hidden rounded-lg transition-all duration-300 active:scale-[0.98]">
+<div class="flex items-center p-8 gap-6 border border-outline-variant/15">
+<div class="flex-shrink-0 w-16 h-16 bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl text-primary" data-icon="admin_panel_settings">admin_panel_settings</span>
+</div>
+<div class="flex-grow">
+<h3 class="text-xl font-bold tracking-tight text-primary">Administrador</h3>
+<p class="text-xs text-on-surface-variant mt-1">Supervisión total de usuarios, reportes y configuración del edificio.</p>
+</div>
+<div class="opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-primary" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Structural Aesthetic Slab -->
+<section class="mt-16 pt-8 border-t border-surface-container-highest">
+<div class="bg-surface-dim p-6 rounded-lg">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary" data-icon="info">info</span>
+<p class="text-[0.6875rem] font-medium leading-relaxed text-secondary tracking-wide">Los permisos están vinculados a tus credenciales de cuenta. Contacta al administrador si tu rol no aparece como esperas.</p>
+</div>
+</div>
+</section>
+<!-- Asymmetrical Image Element for Depth -->
+<div class="mt-12 w-3/4 ml-auto h-40 bg-surface-container-low overflow-hidden rounded-lg relative">
+<div class="absolute inset-0 opacity-10 flex items-center justify-center pointer-events-none">
+<span class="material-symbols-outlined text-[8rem]" data-icon="layers">layers</span>
+</div>
+<div class="h-full w-full bg-surface-container-high border-l-4 border-primary/10"></div>
+</div>
+</main>
+<!-- BottomNavBar (Suppressed based on "Transactional" intent check but structure kept for reference if needed) -->
+<!-- Not rendered as this is a focused task-entry screen (Role Selection) -->
+</body></html>

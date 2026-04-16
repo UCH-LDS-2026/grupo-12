@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "primary-container": "#3b3b3b",
+                "on-background": "#1a1c1c",
+                "secondary-container": "#d5d4d4",
+                "on-surface-variant": "#474747",
+                "outline": "#777777",
+                "background": "#f9f9f9",
+                "surface-variant": "#e2e2e2",
+                "surface-container-lowest": "#ffffff",
+                "on-primary-fixed-variant": "#e2e2e2",
+                "on-secondary-fixed-variant": "#3b3b3c",
+                "on-primary-fixed": "#ffffff",
+                "on-secondary-container": "#1b1c1c",
+                "tertiary": "#3a3c3c",
+                "primary-fixed": "#5e5e5e",
+                "on-tertiary-fixed": "#ffffff",
+                "inverse-surface": "#2f3131",
+                "surface-container": "#eeeeee",
+                "inverse-primary": "#c6c6c6",
+                "surface-container-low": "#f3f3f3",
+                "on-tertiary-container": "#ffffff",
+                "on-tertiary": "#e3e2e2",
+                "tertiary-fixed": "#5d5e5f",
+                "on-secondary": "#ffffff",
+                "on-error": "#ffffff",
+                "surface-container-high": "#e8e8e8",
+                "on-primary": "#e2e2e2",
+                "error": "#ba1a1a",
+                "secondary": "#5e5e5e",
+                "on-secondary-fixed": "#1b1c1c",
+                "tertiary-fixed-dim": "#464747",
+                "on-tertiary-fixed-variant": "#e3e2e2",
+                "primary-fixed-dim": "#474747",
+                "inverse-on-surface": "#f1f1f1",
+                "primary": "#000000",
+                "surface-container-highest": "#e2e2e2",
+                "surface": "#f9f9f9",
+                "error-container": "#ffdad6",
+                "surface-dim": "#dadada",
+                "outline-variant": "#c6c6c6",
+                "surface-bright": "#f9f9f9",
+                "secondary-fixed": "#c7c6c6",
+                "on-primary-container": "#ffffff",
+                "on-error-container": "#410002",
+                "on-surface": "#1a1c1c",
+                "secondary-fixed-dim": "#acabab",
+                "tertiary-container": "#747575",
+                "surface-tint": "#5e5e5e"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+            },
+            "fontFamily": {
+                "headline": ["Inter"],
+                "body": ["Inter"],
+                "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-stone-50 dark:bg-stone-950 flex items-center justify-between px-6 py-4 w-full">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-black dark:text-white" data-icon="shield">shield</span>
+<h1 class="font-sans tracking-tight font-bold text-lg text-black dark:text-white">Control de Acceso</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-stone-400" data-icon="notifications">notifications</span>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center text-[10px] font-bold">G1</div>
+</div>
+</header>
+<div class="bg-stone-200/50 dark:bg-stone-800/50 h-[1px] fixed top-[60px] w-full z-50"></div>
+<!-- Main Content Canvas -->
+<main class="flex-1 mt-20 mb-24 px-6 space-y-8">
+<!-- Search Section (Contextual Slab) -->
+<section class="space-y-4">
+<div class="bg-surface-container-high p-1 rounded-lg flex items-center px-4">
+<span class="material-symbols-outlined text-outline" data-icon="search">search</span>
+<input class="w-full bg-transparent border-none focus:ring-0 text-body-md py-3 px-3 placeholder:text-outline italic" placeholder="Buscar visitante por nombre o ID..." type="text"/>
+</div>
+<div class="flex justify-between items-end">
+<div>
+<span class="text-[0.6875rem] uppercase tracking-widest text-secondary font-bold mb-1 block">Registro Diario</span>
+<h2 class="text-2xl font-black tracking-tighter">Visitas Autorizadas</h2>
+</div>
+<div class="text-right">
+<span class="text-xs font-medium text-outline">12 de Octubre</span>
+</div>
+</div>
+</section>
+<!-- Bento Grid / Asymmetric List -->
+<section class="grid grid-cols-1 gap-4">
+<!-- List Item 1 -->
+<div class="bg-surface-container-lowest border-b-4 border-primary p-5 flex flex-col justify-between min-h-[140px] shadow-sm">
+<div class="flex justify-between items-start">
+<div class="space-y-1">
+<span class="text-[10px] bg-surface-container-highest px-2 py-0.5 font-bold uppercase tracking-tighter">Residente: 402-B</span>
+<h3 class="text-lg font-bold leading-none">Carlos Eduardo Mendoza</h3>
+<p class="text-sm text-on-surface-variant">DNI: 44.555.222</p>
+</div>
+<div class="text-right">
+<span class="block text-xl font-black tabular-nums">09:30</span>
+<span class="text-[10px] text-outline uppercase font-bold">Programado</span>
+</div>
+</div>
+<div class="mt-6 flex justify-end">
+<button class="bg-primary text-on-primary px-6 py-2 rounded-md font-bold text-sm flex items-center gap-2 hover:bg-primary-container transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined text-sm" data-icon="login">login</span>
+                        Registrar ingreso
+                    </button>
+</div>
+</div>
+<!-- List Item 2 -->
+<div class="bg-surface-container-low p-5 flex flex-col justify-between min-h-[140px]">
+<div class="flex justify-between items-start">
+<div class="space-y-1">
+<span class="text-[10px] bg-surface-container-highest px-2 py-0.5 font-bold uppercase tracking-tighter">Entrega: PedidosYa</span>
+<h3 class="text-lg font-bold leading-none">Repartidor Externo</h3>
+<p class="text-sm text-on-surface-variant">Moto: ABC-123</p>
+</div>
+<div class="text-right">
+<span class="block text-xl font-black tabular-nums text-outline">10:15</span>
+<span class="text-[10px] text-outline uppercase font-bold">En Camino</span>
+</div>
+</div>
+<div class="mt-6 flex justify-end">
+<button class="border border-outline text-primary px-6 py-2 rounded-md font-bold text-sm flex items-center gap-2 hover:bg-surface-container-high transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined text-sm" data-icon="how_to_reg">how_to_reg</span>
+                        Verificar
+                    </button>
+</div>
+</div>
+<!-- List Item 3 -->
+<div class="bg-surface-container-lowest border-b-4 border-primary p-5 flex flex-col justify-between min-h-[140px] shadow-sm">
+<div class="flex justify-between items-start">
+<div class="space-y-1">
+<span class="text-[10px] bg-surface-container-highest px-2 py-0.5 font-bold uppercase tracking-tighter">Residente: 105-A</span>
+<h3 class="text-lg font-bold leading-none">Lucía Fernanda Rojas</h3>
+<p class="text-sm text-on-surface-variant">DNI: 38.111.999</p>
+</div>
+<div class="text-right">
+<span class="block text-xl font-black tabular-nums">11:00</span>
+<span class="text-[10px] text-outline uppercase font-bold">Frecuente</span>
+</div>
+</div>
+<div class="mt-6 flex justify-end">
+<button class="bg-primary text-on-primary px-6 py-2 rounded-md font-bold text-sm flex items-center gap-2 hover:bg-primary-container transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined text-sm" data-icon="login">login</span>
+                        Registrar ingreso
+                    </button>
+</div>
+</div>
+<!-- List Item 4 (Empty State / Placeholder) -->
+<div class="bg-surface-container-high border-2 border-dashed border-outline-variant p-8 flex flex-col items-center justify-center text-center opacity-60">
+<span class="material-symbols-outlined text-4xl mb-2 text-outline" data-icon="person_add">person_add</span>
+<p class="text-sm font-medium">¿Visita no listada?</p>
+<button class="mt-2 text-xs font-bold underline uppercase tracking-widest">Crear Registro Manual</button>
+</div>
+</section>
+<!-- Aesthetic Structural Break -->
+<div class="h-32 bg-surface-dim rounded-xl flex items-center justify-center relative overflow-hidden">
+<div class="absolute inset-0 flex items-center justify-center opacity-10 pointer-events-none">
+<span class="text-8xl font-black tracking-tighter">SECURE</span>
+</div>
+<p class="text-[10px] font-bold uppercase tracking-[0.2em] text-secondary-fixed-variant">Protocolo de Seguridad Activo</p>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 border-t border-stone-100 dark:border-stone-900 bg-white/80 dark:bg-black/80 backdrop-blur-xl shadow-[0_-4px_20px_rgba(0,0,0,0.03)] flex justify-around items-center h-20 px-4 pb-safe w-full">
+<!-- Escáner -->
+<div class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-600 grayscale hover:text-black dark:hover:text-white transition-all tap-highlight-transparent active:opacity-70">
+<span class="material-symbols-outlined" data-icon="qr_code_scanner">qr_code_scanner</span>
+<span class="text-[11px] font-medium tracking-wide uppercase Inter">Escáner</span>
+</div>
+<!-- Visitas (Active) -->
+<div class="flex flex-col items-center justify-center text-black dark:text-white font-bold scale-110 transition-transform tap-highlight-transparent active:opacity-70">
+<span class="material-symbols-outlined" data-icon="group" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="text-[11px] font-medium tracking-wide uppercase Inter">Visitas</span>
+</div>
+<!-- Perfil -->
+<div class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-600 grayscale hover:text-black dark:hover:text-white transition-all tap-highlight-transparent active:opacity-70">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-[11px] font-medium tracking-wide uppercase Inter">Perfil</span>
+</div>
+</nav>
+</body></html>
