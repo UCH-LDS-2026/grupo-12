@@ -6,7 +6,7 @@ Contenido:
 Definición del Proyecto: Documento PDF con la descripción del problema, usuarios y solución propuesta.
 
 
-Backlog Inicial: Gestionado a través de GitHub Issues (8 historias de usuario cargadas).
+Backlog Inicial: Gestionado a través de GitHub Issues (10 historias de usuario cargadas).
 
 
 Wireframe: Prototipo conceptual de la interfaz.
