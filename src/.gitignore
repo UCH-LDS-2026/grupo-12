@@ -45,3 +45,6 @@ app-example
 
 # local env files
 .env
+
+# Testing
+coverage/
