@@ -174,7 +174,7 @@ export async function buscarUsuarios(filtros: BuscarUsuariosFiltros) {
   }
 
   if (filtros.nombreOApellido) {
-    const texto = filtros.nombreOApellido;
+    const texto = filtros.nombreOApellido.replace(/[(),]/g, '')
     query = query.or(`nombre.ilike.%${texto}%,apellido.ilike.%${texto}%`);
   }
 
