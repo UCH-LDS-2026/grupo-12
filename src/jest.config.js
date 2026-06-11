@@ -12,6 +12,7 @@ module.exports = {
     }],
   },
   moduleNameMapper: {
+    '@/(.*)': '<rootDir>/$1',
     '@react-native-async-storage/async-storage': '<rootDir>/__mocks__/@react-native-async-storage/async-storage.ts',
     'expo-sqlite/localStorage/install': '<rootDir>/__mocks__/expo-sqlite-localStorage.ts',
     'react-native': '<rootDir>/__mocks__/react-native.ts',
