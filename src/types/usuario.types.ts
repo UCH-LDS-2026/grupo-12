@@ -55,3 +55,10 @@ export type BuscarUsuariosFiltros = {
 	 */
 	nombreOApellido?: string;
 };
+
+// Campos de perfil editables por el usuario (update parcial: solo los que se envían).
+export type ActualizarUsuarioInput = {
+	nombre?: string;
+	apellido?: string;
+	telefono?: string | null;
+};
