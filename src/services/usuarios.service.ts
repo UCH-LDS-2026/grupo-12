@@ -14,6 +14,7 @@
 
 import { USER_ROLES } from '@/utils/roles';
 import {
+  ActualizarUsuarioInput,
   BuscarUsuariosFiltros,
   CrearUsuarioBaseInput,
   Usuario
@@ -185,4 +186,25 @@ export async function buscarUsuarios(filtros: BuscarUsuariosFiltros) {
   }
 
   return (data ?? []) as Usuario[];
+}
+
+// PUT: actualiza los datos de perfil de un usuario por id (update parcial).
+// La restricción de permisos (solo el propio residente) es responsabilidad del llamador.
+export async function actualizarUsuario(id: string, cambios: ActualizarUsuarioInput) {
+  const { data, error } = await supabase
+    .from('usuarios')
+    .update(cambios)
+    .eq('id', id)
+    .select("*")
+    .maybeSingle();
+
+  if (error) {
+    throw new Error(`Error al actualizar usuario: ${error.message}`);
+  }
+
+  if (!data) {
+    throw new Error(`Error al actualizar usuario: no existe un usuario con id ${id}.`);
+  }
+
+  return data as Usuario;
 }
