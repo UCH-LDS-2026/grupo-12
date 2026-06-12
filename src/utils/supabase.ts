@@ -6,9 +6,6 @@ import { Platform } from 'react-native';
 const supabaseUrl = process.env.EXPO_PUBLIC_SUPABASE_URL!;
 const supabasePublishableKey = process.env.EXPO_PUBLIC_SUPABASE_KEY!;
 
-console.log('Supabase URL:', supabaseUrl);
-console.log('Supabase Publishable Key:', supabasePublishableKey);
-
 // Manejo para SSR: Si estamos en un entorno sin window, usamos AsyncStorage
 const isWeb = Platform.OS === 'web';
 const customStorage = isWeb
