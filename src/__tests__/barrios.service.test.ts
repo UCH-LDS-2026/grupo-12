@@ -53,7 +53,7 @@ function mockSelectChain(result: { data: unknown; error: unknown }) {
 
 const barrioMock = {
   id: 'uuid-barrio-1',
-  superAdminId: 'uuid-admin-1',
+  super_admin_id: 'uuid-admin-1',
   nombre: 'Barrio Las Heras',
   direccion: 'Av. Las Heras 1234, Mendoza',
   status: 'activo' as const,
@@ -62,7 +62,7 @@ const barrioMock = {
 };
 
 const inputMock = {
-  superAdminId: 'uuid-admin-1',
+  super_admin_id: 'uuid-admin-1',
   nombre: 'Barrio Las Heras',
   direccion: 'Av. Las Heras 1234, Mendoza',
 };

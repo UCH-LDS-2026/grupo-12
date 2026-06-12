@@ -24,7 +24,7 @@ import { supabase } from '../utils/supabase';
  *
  * @example
  * const barrio = await crearBarrio({
- *   superAdminId: 'uuid-del-super-admin',
+ *   super_admin_id: 'uuid-del-super-admin',
  *   nombre: 'Barrio Las Heras',
  *   direccion: 'Av. Las Heras 1234, Mendoza',
  * });

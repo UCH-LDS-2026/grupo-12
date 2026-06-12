@@ -4,13 +4,12 @@
 // ============================================================
 
 /**
- * Representa un SuperAdmin tal como está en la tabla `SuperAdmin` de Supabase.
- * Nota: el campo es `passwordHash` (camelCase) según la BD real.
+ * Representa un SuperAdmin tal como está en la tabla `super_admins` de Supabase.
  */
 export type SuperAdmin = {
     id: string;
     email: string;
-    passwordHash: string;
+    password_hash: string;
     nombre: string;
 };
 
@@ -22,7 +21,7 @@ export type Barrio = {
     /** UUID generado automáticamente por Supabase */
     id: string;
     /** UUID del SuperAdmin que creó este barrio */
-    superAdminId: string;
+    super_admin_id: string;
     /** Nombre del barrio privado */
     nombre: string;
     /** Dirección física del barrio */
@@ -40,8 +39,8 @@ export type Barrio = {
  * NO incluye `id` ni `created_at` porque los genera Supabase.
  */
 export type CrearBarrioInput = {
-    /** UUID del SuperAdmin que crea el barrio. Debe existir en la tabla SuperAdmin */
-    superAdminId: string;
+    /** UUID del SuperAdmin que crea el barrio. Debe existir en la tabla super_admins */
+    super_admin_id: string;
     /** Nombre del barrio. Máximo 100 caracteres */
     nombre: string;
     /** Dirección del barrio. Máximo 255 caracteres */
