@@ -6,7 +6,8 @@ export type EstadoVisita =
   | 'aprobada'
   | 'ingresada'
   | 'rechazada'
-  | 'expirada';
+  | 'expirada'
+  | 'cancelada';
 
 // Una visita tal como está almacenada en la tabla `visitas` de Supabase.
 export type Visita = {

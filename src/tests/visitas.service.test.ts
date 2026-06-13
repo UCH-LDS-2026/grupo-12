@@ -1,4 +1,4 @@
-import { crearVisita, listarVisitasPorResidente } from '../services/visitas.service';
+import { crearVisita, listarVisitasPorResidente, cancelarVisita } from '../services/visitas.service';
 import { supabase } from '../utils/supabase';
 
 jest.mock('../utils/supabase', () => ({
@@ -24,6 +24,16 @@ function mockSelectChain(result: { data: unknown; error: unknown }) {
   const selectMock = jest.fn().mockReturnValue(chain);
   (supabase.from as jest.Mock).mockReturnValue({ select: selectMock });
   return { selectMock, chain };
+}
+
+// Mock de la cadena supabase.from(...).update(...).eq(...).select().maybeSingle()
+function mockUpdateChain(result: { data: unknown; error: unknown }) {
+  const maybeSingleMock = jest.fn().mockResolvedValue(result);
+  const selectMock = jest.fn().mockReturnValue({ maybeSingle: maybeSingleMock });
+  const eqMock = jest.fn().mockReturnValue({ select: selectMock });
+  const updateMock = jest.fn().mockReturnValue({ eq: eqMock });
+  (supabase.from as jest.Mock).mockReturnValue({ update: updateMock });
+  return { updateMock, eqMock, selectMock, maybeSingleMock };
 }
 
 const inputMock = {
@@ -121,6 +131,38 @@ describe('listarVisitasPorResidente()', () => {
 
     await expect(listarVisitasPorResidente('uuid-residente-1')).rejects.toThrow(
       'Error al listar visitas: connection error'
+    );
+  });
+});
+
+describe('cancelarVisita()', () => {
+  beforeEach(() => jest.clearAllMocks());
+
+  it('marca la visita como "cancelada" y la devuelve', async () => {
+    const canceladaMock = { ...visitaMock, estado: 'cancelada' };
+    const { updateMock, eqMock } = mockUpdateChain({ data: canceladaMock, error: null });
+
+    const resultado = await cancelarVisita('uuid-visita-1');
+
+    expect(supabase.from).toHaveBeenCalledWith('visitas');
+    expect(updateMock).toHaveBeenCalledWith({ estado: 'cancelada' });
+    expect(eqMock).toHaveBeenCalledWith('id', 'uuid-visita-1');
+    expect(resultado.estado).toBe('cancelada');
+  });
+
+  it('lanza un Error cuando no existe una visita con ese id', async () => {
+    mockUpdateChain({ data: null, error: null });
+
+    await expect(cancelarVisita('inexistente')).rejects.toThrow(
+      'Error al cancelar la visita: no existe una visita con id inexistente.'
+    );
+  });
+
+  it('lanza un Error con el mensaje de Supabase cuando hay un error de BD', async () => {
+    mockUpdateChain({ data: null, error: { message: 'connection error' } });
+
+    await expect(cancelarVisita('uuid-visita-1')).rejects.toThrow(
+      'Error al cancelar la visita: connection error'
     );
   });
 });

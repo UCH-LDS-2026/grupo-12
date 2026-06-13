@@ -2,6 +2,7 @@
 // Funciones que hablan con Supabase para la entidad Visita:
 //   - crearVisita()                → POST: el residente carga una visita
 //   - listarVisitasPorResidente()  → GET: visitas creadas por un residente
+//   - cancelarVisita()             → cancela una visita (la marca como 'cancelada')
 
 import { CrearVisitaInput, Visita } from '../types/visita.types';
 import { supabase } from '../utils/supabase';
@@ -38,4 +39,24 @@ export async function listarVisitasPorResidente(userId: string) {
   }
 
   return (data ?? []) as Visita[];
+}
+
+// Cancela una visita: la marca como 'cancelada' para que no pueda usarse.
+export async function cancelarVisita(id: string) {
+  const { data, error } = await supabase
+    .from('visitas')
+    .update({ estado: 'cancelada' })
+    .eq('id', id)
+    .select('*')
+    .maybeSingle();
+
+  if (error) {
+    throw new Error(`Error al cancelar la visita: ${error.message}`);
+  }
+
+  if (!data) {
+    throw new Error(`Error al cancelar la visita: no existe una visita con id ${id}.`);
+  }
+
+  return data as Visita;
 }
