@@ -15,8 +15,8 @@ export type Acceso = {
 };
 
 // Datos de la visita que el guardia ve al buscar por DNI en portería.
-// (Vista acotada de la tabla `visitas`, solo lo necesario para validar el ingreso.)
-export type VisitaParaIngreso = {
+// (Vista acotada de la tabla `visitas`, solo lo necesario para validar ingreso/egreso.)
+export type VisitaParaAcceso = {
   id: string;
   barrio_id: string;
   nombre_visitante: string;

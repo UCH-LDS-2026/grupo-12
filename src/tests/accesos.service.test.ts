@@ -1,4 +1,9 @@
-import { buscarVisitaVigentePorDni, registrarIngreso } from '../services/accesos.service';
+import {
+  buscarVisitaVigentePorDni,
+  registrarIngreso,
+  buscarVisitaIngresadaPorDni,
+  registrarEgreso,
+} from '../services/accesos.service';
 import { supabase } from '../utils/supabase';
 
 jest.mock('../utils/supabase', () => ({
@@ -28,6 +33,8 @@ const visitaMock = {
   fecha_hasta: '2026-06-13T20:00:00Z',
   estado: 'pendiente',
 };
+
+const visitaIngresadaMock = { ...visitaMock, estado: 'ingresada' };
 
 const accesoMock = {
   id: 'uuid-acceso-1',
@@ -111,6 +118,71 @@ describe('registrarIngreso()', () => {
 
     await expect(registrarIngreso(visitaMock, 'uuid-guardia-1')).rejects.toThrow(
       'Error al registrar el ingreso: FK constraint violation'
+    );
+  });
+});
+
+describe('buscarVisitaIngresadaPorDni()', () => {
+  beforeEach(() => jest.clearAllMocks());
+
+  it('devuelve la visita ingresada para ese DNI', async () => {
+    setupChain({ data: visitaIngresadaMock, error: null });
+
+    const resultado = await buscarVisitaIngresadaPorDni('30123456');
+
+    expect(resultado).toEqual(visitaIngresadaMock);
+  });
+
+  it('busca en "visitas" filtrando por dni y estado "ingresada"', async () => {
+    const chain = setupChain({ data: visitaIngresadaMock, error: null });
+
+    await buscarVisitaIngresadaPorDni('30123456');
+
+    expect(supabase.from).toHaveBeenCalledWith('visitas');
+    expect(chain.eq).toHaveBeenCalledWith('dni', '30123456');
+    expect(chain.eq).toHaveBeenCalledWith('estado', 'ingresada');
+  });
+
+  it('devuelve null cuando no hay visita ingresada', async () => {
+    setupChain({ data: null, error: null });
+
+    const resultado = await buscarVisitaIngresadaPorDni('00000000');
+
+    expect(resultado).toBeNull();
+  });
+
+  it('lanza un Error con el mensaje de Supabase cuando hay un error de BD', async () => {
+    setupChain({ data: null, error: { message: 'connection error' } });
+
+    await expect(buscarVisitaIngresadaPorDni('30123456')).rejects.toThrow(
+      'Error al buscar la visita ingresada por DNI: connection error'
+    );
+  });
+});
+
+describe('registrarEgreso()', () => {
+  beforeEach(() => jest.clearAllMocks());
+
+  it('registra el acceso de egreso con los datos correctos', async () => {
+    const chain = setupChain({ data: { ...accesoMock, tipo: 'egreso' }, error: null });
+
+    const resultado = await registrarEgreso(visitaIngresadaMock, 'uuid-guardia-1');
+
+    expect(supabase.from).toHaveBeenCalledWith('accesos');
+    expect(chain.insert).toHaveBeenCalledWith({
+      barrio_id: 'uuid-barrio-1',
+      visita_id: 'uuid-visita-1',
+      guardia_user_id: 'uuid-guardia-1',
+      tipo: 'egreso',
+    });
+    expect(resultado).toEqual({ ...accesoMock, tipo: 'egreso' });
+  });
+
+  it('lanza un Error si Supabase falla al registrar el egreso', async () => {
+    setupChain({ data: null, error: { message: 'FK constraint violation' } });
+
+    await expect(registrarEgreso(visitaIngresadaMock, 'uuid-guardia-1')).rejects.toThrow(
+      'Error al registrar el egreso: FK constraint violation'
     );
   });
 });
