@@ -45,16 +45,22 @@ export function useAuth() {
 
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange(async (event, session) => {
-      if (isMounted) {
+    } = supabase.auth.onAuthStateChange((event, session) => {
+      if (!isMounted) return;
+      // IMPORTANTE: el callback corre con el lock de auth tomado. Si hacemos `await` de una
+      // consulta a Supabase acá (que necesita ese mismo lock) se produce un DEADLOCK y todas
+      // las consultas posteriores quedan colgadas. Por eso diferimos el trabajo async con
+      // setTimeout(…, 0): el callback retorna, se libera el lock y recién ahí consultamos.
+      setTimeout(async () => {
+        if (!isMounted) return;
         if (session?.user.email) {
           const usuario = await obtenerUsuarioPorEmail(session.user.email);
-          setUser(usuario);
+          if (isMounted) setUser(usuario);
         } else {
           setUser(null);
         }
-        setLoading(false);
-      }
+        if (isMounted) setLoading(false);
+      }, 0);
     });
 
     return () => {

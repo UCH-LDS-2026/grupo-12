@@ -1,12 +1,33 @@
 // Servicio de Accesos — Grupo 12 UCH LDS 2026
 // Flujo del guardia en portería (validación por DNI):
+//   - listarVisitasDePorteria()     → GET: visitas del barrio con acción pendiente (panel del guardia)
 //   - buscarVisitaVigentePorDni()   → GET: visita autorizada y vigente, para registrar el INGRESO
 //   - registrarIngreso()            → POST: registra el ingreso y marca la visita como 'ingresada'
 //   - buscarVisitaIngresadaPorDni() → GET: visita que ya ingresó, para registrar el EGRESO
-//   - registrarEgreso()             → POST: registra el egreso
+//   - registrarEgreso()             → POST: registra el egreso y marca la visita como 'egresada'
 
 import { Acceso, VisitaParaAcceso } from '../types/acceso.types';
 import { supabase } from '../utils/supabase';
+
+// Lista las visitas del barrio que requieren acción del guardia, para el panel de portería:
+//   - 'pendiente' / 'aprobada' → programadas, todavía no ingresaron (se les registra el INGRESO)
+//   - 'ingresada'              → están dentro del barrio (se les registra el EGRESO)
+// Las que ya completaron su ciclo ('egresada') u otras ('cancelada', etc.) quedan fuera.
+// Ordenadas por fecha_desde ascendente. Devuelve [] si no hay ninguna.
+export async function listarVisitasDePorteria(barrioId: string) {
+  const { data, error } = await supabase
+    .from('visitas')
+    .select('id, barrio_id, nombre_visitante, dni, fecha_desde, fecha_hasta, estado')
+    .eq('barrio_id', barrioId)
+    .in('estado', ['pendiente', 'aprobada', 'ingresada'])
+    .order('fecha_desde', { ascending: true });
+
+  if (error) {
+    throw new Error(`Error al listar las visitas de portería: ${error.message}`);
+  }
+
+  return (data ?? []) as VisitaParaAcceso[];
+}
 
 // Busca una visita autorizada y vigente para un DNI, dentro del barrio del guardia (para el ingreso).
 // "Vigente" = estado pendiente/aprobada y la fecha de hoy dentro de fecha_desde–fecha_hasta.
@@ -88,7 +109,9 @@ export async function buscarVisitaIngresadaPorDni(dni: string, barrioId: string)
   return data as VisitaParaAcceso | null;
 }
 
-// Registra el egreso de una visita en portería.
+// Registra el egreso de una visita en portería y marca su pase como 'egresada'
+// (ya entró y salió: completó su ciclo y no debe seguir apareciendo en el panel del
+// guardia). El movimiento queda igual registrado en la bitácora `accesos`.
 export async function registrarEgreso(visita: VisitaParaAcceso, guardiaUserId: string) {
   const { data, error } = await supabase
     .from('accesos')
@@ -107,6 +130,16 @@ export async function registrarEgreso(visita: VisitaParaAcceso, guardiaUserId: s
 
   if (!data) {
     throw new Error('Error al registrar el egreso: Supabase no devolvió ningún dato.');
+  }
+
+  // La visita completó su ciclo ingreso → egreso: queda 'egresada'.
+  const { error: updateError } = await supabase
+    .from('visitas')
+    .update({ estado: 'egresada' })
+    .eq('id', visita.id);
+
+  if (updateError) {
+    throw new Error(`Error al cerrar la visita tras el egreso: ${updateError.message}`);
   }
 
   return data as Acceso;

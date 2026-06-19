@@ -5,6 +5,7 @@ export type EstadoVisita =
   | 'pendiente'
   | 'aprobada'
   | 'ingresada'
+  | 'egresada'   // Ya ingresó y el guardia registró su egreso: ciclo completo.
   | 'rechazada'
   | 'expirada'
   | 'cancelada';
