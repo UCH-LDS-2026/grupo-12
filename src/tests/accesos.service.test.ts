@@ -197,6 +197,16 @@ describe('registrarEgreso()', () => {
     expect(resultado).toEqual({ ...accesoMock, tipo: 'egreso' });
   });
 
+  it('marca la visita como "egresada"', async () => {
+    const chain = setupChain({ data: { ...accesoMock, tipo: 'egreso' }, error: null });
+
+    await registrarEgreso(visitaIngresadaMock, 'uuid-guardia-1');
+
+    expect(supabase.from).toHaveBeenCalledWith('visitas');
+    expect(chain.update).toHaveBeenCalledWith({ estado: 'egresada' });
+    expect(chain.eq).toHaveBeenCalledWith('id', 'uuid-visita-1');
+  });
+
   it('lanza un Error si Supabase falla al registrar el egreso', async () => {
     setupChain({ data: null, error: { message: 'FK constraint violation' } });
 

@@ -11,6 +11,10 @@ export default function Home() {
     return <Redirect href="/(protected)/admin/(tabs)" />;
   }
 
+  if (user?.rol === USER_ROLES.GUARDIA) {
+    return <Redirect href="/(protected)/guardia/(tabs)" />;
+  }
+
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text style={{ fontSize: 24, fontWeight: 'bold' }}>Barrios Privados - NO VALID ROLE</Text>

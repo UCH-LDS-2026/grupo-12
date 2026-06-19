@@ -89,7 +89,7 @@ CREATE TABLE visitas (
     fecha_hasta            TIMESTAMP NOT NULL,
     reserva_id             UUID, -- Referencia lógica opcional a futuro
     estado                 VARCHAR(20) NOT NULL DEFAULT 'pendiente'
-                             CHECK (estado IN ('pendiente', 'aprobada', 'ingresada', 'rechazada', 'expirada')),
+                             CHECK (estado IN ('pendiente', 'aprobada', 'ingresada', 'egresada', 'rechazada', 'expirada', 'cancelada')),
     created_at             TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
