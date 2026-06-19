@@ -1,3 +1,5 @@
+import { obtenerUsuarioPorEmail } from '@/services/usuarios.service';
+import { Usuario } from '@/types/usuario.types';
 import { supabase } from '@/utils/supabase';
 import { useEffect, useState } from 'react';
 
@@ -7,7 +9,7 @@ export interface AuthUser {
 }
 
 export function useAuth() {
-  const [user, setUser] = useState<AuthUser | null>(null);
+  const [user, setUser] = useState<Usuario | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -15,50 +17,40 @@ export function useAuth() {
 
     const checkAuth = async () => {
       try {
-        // First check if there's a session
         const { data: { session }, error: sessionError } = await supabase.auth.getSession();
         
-        console.log('Session check:', { hasSession: !!session, error: sessionError?.message });
+        if (sessionError) {
+          throw new Error(`Error getting session: ${sessionError.message}`);
+        }
 
         if (isMounted) {
-          // Only proceed if there's a valid session
-          if (session?.user) {
-            setUser({ id: session.user.id, email: session.user.email });
-            console.log('User authenticated:', session.user.email);
+          if (session?.user.email) {
+            const usuario = await obtenerUsuarioPorEmail(session.user.email);
+            setUser(usuario);
           } else {
             setUser(null);
-            console.log('No valid session found');
           }
           setLoading(false);
         }
       } catch (error) {
-        console.error('Auth check exception:', error);
         if (isMounted) {
           setUser(null);
           setLoading(false);
         }
+        throw new Error(`Error checking auth: ${error instanceof Error ? error.message : String(error)}`);
       }
     };
 
     checkAuth();
 
-    // Listen for auth changes
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange((event, session) => {
-      console.log('Auth state changed:', { 
-        event, 
-        hasSession: !!session, 
-        user: session?.user?.email,
-        sessionUser: session?.user
-      });
-      
+    } = supabase.auth.onAuthStateChange(async (event, session) => {
       if (isMounted) {
-        if (session?.user) {
-          console.log('Setting user:', session.user.email);
-          setUser({ id: session.user.id, email: session.user.email });
+        if (session?.user.email) {
+          const usuario = await obtenerUsuarioPorEmail(session.user.email);
+          setUser(usuario);
         } else {
-          console.log('Clearing user - setting to null');
           setUser(null);
         }
         setLoading(false);
