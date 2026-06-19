@@ -1,6 +1,6 @@
-import { crearLote, listarLotesPorBarrio, obtenerLotePorId } from '@/services/lotes';
-import { supabase } from '@/utils/supabase';
+import { crearLote, listarLotesPorBarrio, obtenerLotePorId } from '@/services/lotes.service';
 import type { Lote } from '@/types/lote';
+import { supabase } from '@/utils/supabase';
 
 jest.mock('@/utils/supabase', () => ({
   supabase: { from: jest.fn() },
