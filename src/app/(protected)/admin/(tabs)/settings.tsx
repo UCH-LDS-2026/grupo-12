@@ -27,7 +27,7 @@ export default function SettingsScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
-        <Text style={styles.title}>Settings</Text>
+        <Text style={styles.title}>Ajustes</Text>
 
         <TouchableOpacity
           style={[styles.logoutButton, loading && styles.buttonDisabled]}
@@ -37,7 +37,7 @@ export default function SettingsScreen() {
           {loading ? (
             <ActivityIndicator color="#fff" />
           ) : (
-            <Text style={styles.logoutButtonText}>Logout</Text>
+            <Text style={styles.logoutButtonText}>Cerrar sesión</Text>
           )}
         </TouchableOpacity>
       </View>

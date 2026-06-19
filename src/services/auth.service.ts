@@ -49,21 +49,29 @@ export async function inviteUser({ nombre, apellido, email, role, barrio_id}: { 
   }
 
   if (role === USER_ROLES.RESIDENTE) {
-    crearResidente({
-      email,
-      barrio_id,
-      nombre,
-      apellido,
-    })
+    try {
+      await crearResidente({
+        email,
+        barrio_id,
+        nombre,
+        apellido,
+      })
+    } catch (error) {
+      console.error('Error al crear residente después de la invitación:', error);
+    }
   }
 
   if (role === USER_ROLES.GUARDIA) {
-    crearGuardia({
-      email,
-      barrio_id,
-      nombre,
-      apellido,
-    })
+    try {
+      await crearGuardia({
+        email,
+        barrio_id,
+        nombre,
+        apellido,
+      })
+    } catch (error) {
+      console.error('Error al crear guardia después de la invitación:', error);
+    }
   }
 
   return data;
