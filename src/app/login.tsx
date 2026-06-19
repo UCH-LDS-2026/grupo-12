@@ -14,18 +14,17 @@ export default function Login() {
     setIsLoading(true);
 
     try {
-      const { data, error } = await supabase.auth.signInWithPassword({
+      const { error } = await supabase.auth.signInWithPassword({
         email,
         password,
       });
-
-      router.replace('/(protected)/(tabs)');
 
       if (error) {
         throw error;
       }
 
       toast.success('¡Inicio de sesión exitoso!');
+      router.replace('/(protected)');
     } catch (err) {
       toast.error('Error al iniciar sesión. Por favor, verifica tus credenciales.');
       console.error('Login error:', err);
