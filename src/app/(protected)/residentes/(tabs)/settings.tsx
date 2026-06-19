@@ -37,7 +37,7 @@ export default function SettingsScreen() {
           {loading ? (
             <ActivityIndicator color="#fff" />
           ) : (
-            <Text style={styles.logoutButtonText}>Cerrar sesión</Text>
+            <Text style={styles.logoutButtonText}>Cerrar sesion</Text>
           )}
         </TouchableOpacity>
       </View>

@@ -13,13 +13,25 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
+          title: 'Inicio',
+        }}
+      />
+      <Tabs.Screen
+        name="inviteResident"
+        options={{
+          title: 'Invitar Residente',
+        }}
+      />
+      <Tabs.Screen
+        name="inviteGuard"
+        options={{
+          title: 'Invitar Guardia',
         }}
       />
       <Tabs.Screen
         name="settings"
         options={{
-          title: 'Settings',
+          title: 'Ajustes',
         }}
       />
     </Tabs>
